@@ -1,0 +1,7 @@
+{
+  "name": "AEGIS-Ω: Fractal AGI Interface",
+  "description": "A high-fidelity Fractal UI for monitoring and interacting with the AEGIS-Ω AGI substrate, featuring real-time ethical alignment monitoring, node swarm management, and recursive machine introspection.",
+  "requestFramePermissions": [
+    "camera"
+  ]
+}
