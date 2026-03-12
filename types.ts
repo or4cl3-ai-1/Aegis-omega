@@ -41,3 +41,15 @@ export interface SwarmNode {
   color: string;
   icon: string;
 }
+
+export interface FractalPreset {
+  id: string;
+  name: string;
+  type: 'mandelbrot' | 'julia';
+  maxIterations: number;
+  colorScheme: 'neon' | 'obsidian' | 'plasma' | 'electric';
+  juliaC?: { re: number; im: number };
+  zoom: number;
+  offsetX: number;
+  offsetY: number;
+}

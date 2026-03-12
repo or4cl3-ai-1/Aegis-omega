@@ -12,17 +12,22 @@ import {
   LayoutDashboard,
   Box,
   BrainCircuit,
-  Terminal
+  Terminal,
+  Palette
 } from 'lucide-react';
 import FractalBackground from './components/FractalBackground';
 import Dashboard from './components/Dashboard';
 import NodeManager from './components/NodeManager';
 import EpinoeticFoundry from './components/EpinoeticFoundry';
 import SwarmChat from './components/SwarmChat';
+import FractalGenerator from './components/FractalGenerator';
+import LandingPage from './components/LandingPage';
+import LoadingScreen from './components/LoadingScreen';
 import { SystemStatus, SigmaState } from './types';
 
 const App: React.FC = () => {
-  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'foundry' | 'swarm-chat'>('dashboard');
+  const [appState, setAppState] = useState<'landing' | 'loading' | 'main'>('landing');
+  const [activeTab, setActiveTab] = useState<'dashboard' | 'nodes' | 'foundry' | 'swarm-chat' | 'generator'>('dashboard');
   const [systemStatus, setSystemStatus] = useState<SystemStatus>('STABLE');
   const [sigma, setSigma] = useState<SigmaState>({
     pas: 0.934,
@@ -58,28 +63,39 @@ const App: React.FC = () => {
     setTimeout(() => setSystemStatus('STABLE'), 3000);
   };
 
+  if (appState === 'landing') {
+    return <LandingPage onStart={() => setAppState('loading')} />;
+  }
+
+  if (appState === 'loading') {
+    return <LoadingScreen onComplete={() => setAppState('main')} />;
+  }
+
   return (
-    <div className="relative w-full h-screen overflow-hidden text-cyan-50">
+    <div className="relative w-full h-screen overflow-hidden text-slate-100 bg-[#050505]">
       <FractalBackground pas={sigma.pas} />
 
       {/* Top Status Bar */}
-      <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-6 glass-panel z-50">
+      <header className="absolute top-0 left-0 w-full h-16 flex items-center justify-between px-4 md:px-6 glass-panel z-50 border-b border-purple-500/20">
         <div className="flex items-center gap-3">
-          <div className="tensor-loader w-8 h-8 rounded-full border-2 border-cyan-400 border-t-transparent shadow-[0_0_10px_#00ffff]" />
-          <h1 className="text-xl font-extrabold tracking-tighter neon-text">
-            AEGIS-<span className="text-cyan-400">Ω</span>
+          <div className="relative w-8 h-8 flex items-center justify-center">
+            <div className="absolute inset-0 rounded-full border border-purple-500/50 animate-spin-slow" />
+            <span className="text-xl font-black text-white neon-text-purple">Ω</span>
+          </div>
+          <h1 className="text-lg md:text-xl font-black tracking-tighter text-white">
+            AEGIS-<span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-500">Ω</span>
           </h1>
         </div>
         
-        <div className="flex items-center gap-6 jetbrains-mono text-xs">
+        <div className="flex items-center gap-4 md:gap-6 jetbrains-mono text-[10px] md:text-xs">
           <div className="flex flex-col items-end">
-            <span className="text-cyan-600 font-bold uppercase tracking-widest">System Attractor</span>
+            <span className="text-purple-600 font-black uppercase tracking-widest">Attractor</span>
             <span className={`font-bold ${systemStatus === 'LOCKDOWN' ? 'text-red-500' : 'text-cyan-400'}`}>
               {systemStatus}
             </span>
           </div>
-          <div className="flex flex-col items-end">
-            <span className="text-cyan-600 font-bold uppercase tracking-widest">Proof Entropy</span>
+          <div className="hidden sm:flex flex-col items-end">
+            <span className="text-purple-600 font-black uppercase tracking-widest">Entropy</span>
             <span className="text-white">λ=0.0421</span>
           </div>
         </div>
@@ -92,43 +108,32 @@ const App: React.FC = () => {
           {activeTab === 'nodes' && <NodeManager />}
           {activeTab === 'foundry' && <EpinoeticFoundry sigma={sigma} />}
           {activeTab === 'swarm-chat' && <SwarmChat sigma={sigma} />}
+          {activeTab === 'generator' && <FractalGenerator />}
         </div>
       </main>
 
       {/* Bottom Navigation (Sovereignty) */}
-      <nav className="absolute bottom-0 left-0 w-full glass-panel z-50 flex justify-between items-center px-6 py-4">
-        <div className="flex gap-1">
-          <button 
-            onClick={() => setActiveTab('dashboard')}
-            className={`flex flex-col items-center p-3 rounded-lg transition-all ${activeTab === 'dashboard' ? 'bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.2)]' : 'text-gray-500 hover:text-cyan-300'}`}
-          >
-            <LayoutDashboard size={20} />
-            <span className="text-[10px] uppercase font-bold mt-1">Matrix</span>
-          </button>
-          <button 
-            onClick={() => setActiveTab('nodes')}
-            className={`flex flex-col items-center p-3 rounded-lg transition-all ${activeTab === 'nodes' ? 'bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.2)]' : 'text-gray-500 hover:text-cyan-300'}`}
-          >
-            <Cpu size={20} />
-            <span className="text-[10px] uppercase font-bold mt-1">Swarm</span>
-          </button>
-          <button 
-            onClick={() => setActiveTab('swarm-chat')}
-            className={`flex flex-col items-center p-3 rounded-lg transition-all ${activeTab === 'swarm-chat' ? 'bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.2)]' : 'text-gray-500 hover:text-cyan-300'}`}
-          >
-            <Terminal size={20} />
-            <span className="text-[10px] uppercase font-bold mt-1">Chat</span>
-          </button>
-          <button 
-            onClick={() => setActiveTab('foundry')}
-            className={`flex flex-col items-center p-3 rounded-lg transition-all ${activeTab === 'foundry' ? 'bg-cyan-500/20 text-cyan-400 shadow-[0_0_15px_rgba(0,255,255,0.2)]' : 'text-gray-500 hover:text-cyan-300'}`}
-          >
-            <BrainCircuit size={20} />
-            <span className="text-[10px] uppercase font-bold mt-1">Foundry</span>
-          </button>
+      <nav className="absolute bottom-0 left-0 w-full glass-panel z-50 flex flex-col md:flex-row justify-between items-center px-4 md:px-6 py-2 md:py-4 border-t border-purple-500/20">
+        <div className="flex w-full md:w-auto justify-around md:justify-start gap-1 md:gap-2">
+          {[
+            { id: 'dashboard', icon: LayoutDashboard, label: 'Matrix' },
+            { id: 'nodes', icon: Cpu, label: 'Swarm' },
+            { id: 'swarm-chat', icon: Terminal, label: 'Chat' },
+            { id: 'generator', icon: Palette, label: 'Gen' },
+            { id: 'foundry', icon: BrainCircuit, label: 'Foundry' }
+          ].map((tab) => (
+            <button 
+              key={tab.id}
+              onClick={() => setActiveTab(tab.id as any)}
+              className={`flex flex-col items-center p-2 md:p-3 rounded-xl transition-all flex-1 md:flex-none ${activeTab === tab.id ? 'bg-purple-500/20 text-purple-400 shadow-[0_0_15px_rgba(168,85,247,0.2)] border border-purple-500/30' : 'text-gray-500 hover:text-purple-300'}`}
+            >
+              <tab.icon size={18} className="md:w-5 md:h-5" />
+              <span className="text-[8px] md:text-[10px] uppercase font-black mt-1 tracking-tighter">{tab.label}</span>
+            </button>
+          ))}
         </div>
 
-        <div className="flex gap-4">
+        <div className="hidden md:flex gap-4">
           <button 
             onClick={handleReset}
             className="p-3 bg-white/5 hover:bg-white/10 rounded-full border border-white/10 transition-colors"

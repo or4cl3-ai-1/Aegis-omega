@@ -12,69 +12,69 @@ interface Props {
 
 const Dashboard: React.FC<Props> = ({ sigma, systemStatus }) => {
   return (
-    <div className="grid grid-cols-1 md:grid-cols-12 gap-6 pb-12">
+    <div className="grid grid-cols-1 md:grid-cols-12 gap-4 md:gap-6 pb-12">
       {/* System Status: Authority */}
-      <div className="md:col-span-8 glass-panel p-6 rounded-2xl relative overflow-hidden group">
+      <div className="md:col-span-8 glass-panel p-4 md:p-6 rounded-3xl relative overflow-hidden group border-purple-500/20">
         <div className="flex justify-between items-start mb-6">
           <div>
-            <h2 className="text-xs font-bold text-cyan-600 uppercase tracking-[0.2em] mb-1">HQCI-QSCE Substrate</h2>
-            <h3 className="text-2xl font-bold jetbrains-mono">Cognitive Modules</h3>
+            <h2 className="text-[10px] font-black text-purple-500 uppercase tracking-[0.3em] mb-1">HQCI-QSCE Substrate</h2>
+            <h3 className="text-xl md:text-2xl font-black text-white tracking-tight">Cognitive Modules</h3>
           </div>
-          <div className="px-3 py-1 bg-cyan-500/10 border border-cyan-400/30 rounded text-cyan-400 text-[10px] font-bold uppercase jetbrains-mono flex items-center gap-2">
-            <span className="w-2 h-2 rounded-full bg-cyan-400 animate-pulse" />
-            Polymathic Engine Active
+          <div className="px-3 py-1 bg-purple-500/10 border border-purple-400/30 rounded-full text-purple-400 text-[9px] font-black uppercase tracking-widest flex items-center gap-2">
+            <span className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+            Polymathic Engine
           </div>
         </div>
 
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 md:gap-4">
           {[
-            { label: 'Bio-Logics', val: '99.2%', icon: Database },
-            { label: 'Ethical M_E', val: 'Stable', icon: ShieldCheck },
-            { label: 'Latent Space', val: 'Hilbert-4', icon: Zap },
-            { label: 'Sync Rate', val: '4.2ms', icon: Globe },
+            { label: 'Bio-Logics', val: '99.2%', icon: Database, color: 'text-purple-400' },
+            { label: 'Ethical M_E', val: 'Stable', icon: ShieldCheck, color: 'text-pink-400' },
+            { label: 'Latent Space', val: 'Hilbert-4', icon: Zap, color: 'text-cyan-400' },
+            { label: 'Sync Rate', val: '4.2ms', icon: Globe, color: 'text-indigo-400' },
           ].map((stat, i) => (
-            <div key={i} className="bg-black/20 p-4 rounded-xl border border-white/5 hover:border-cyan-500/30 transition-all">
-              <stat.icon size={16} className="text-cyan-400 mb-2" />
-              <div className="text-[10px] text-gray-500 uppercase font-bold">{stat.label}</div>
-              <div className="text-lg font-bold text-white">{stat.val}</div>
+            <div key={i} className="bg-white/5 p-3 md:p-4 rounded-2xl border border-white/5 hover:border-purple-500/30 transition-all group/stat">
+              <stat.icon size={16} className={`${stat.color} mb-2 group-hover/stat:scale-110 transition-transform`} />
+              <div className="text-[9px] text-gray-500 uppercase font-black tracking-widest">{stat.label}</div>
+              <div className="text-base md:text-lg font-black text-white">{stat.val}</div>
             </div>
           ))}
         </div>
 
         {/* TT-SVD Visualization Placeholder */}
-        <div className="mt-8 h-40 bg-gradient-to-t from-cyan-900/10 to-transparent rounded-xl border border-white/5 flex items-end p-4 gap-1">
+        <div className="mt-8 h-32 md:h-40 bg-gradient-to-t from-purple-900/10 to-transparent rounded-2xl border border-white/5 flex items-end p-4 gap-1 overflow-hidden">
           {Array.from({ length: 40 }).map((_, i) => (
             <div 
               key={i} 
-              className="flex-1 bg-cyan-400/40 rounded-t-sm" 
+              className="flex-1 bg-purple-500/30 rounded-t-sm" 
               style={{ 
                 height: `${20 + Math.sin(i * 0.5 + Date.now() / 1000) * 40 + Math.random() * 40}%`,
-                opacity: 0.3 + (i / 40) * 0.7
+                opacity: 0.2 + (i / 40) * 0.6
               }} 
             />
           ))}
         </div>
-        <div className="absolute top-0 right-0 p-4 text-[10px] text-cyan-500/20 jetbrains-mono pointer-events-none">
+        <div className="absolute top-0 right-0 p-4 text-[9px] text-purple-500/20 jetbrains-mono pointer-events-none">
           Factorizing Hidden States... TT-SVD_RANK=128
         </div>
       </div>
 
       {/* Σ-Matrix: The Core Metric */}
-      <div className="md:col-span-4 glass-panel p-6 rounded-2xl border-l-4 border-l-cyan-500/50">
-        <h2 className="text-xs font-bold text-cyan-600 uppercase tracking-[0.2em] mb-4">Alignment Gauge</h2>
+      <div className="md:col-span-4 glass-panel p-4 md:p-6 rounded-3xl border-l-4 border-l-purple-500/50">
+        <h2 className="text-[10px] font-black text-purple-500 uppercase tracking-[0.3em] mb-4">Alignment Gauge</h2>
         <SigmaMatrix sigma={sigma} />
         <div className="mt-6 space-y-4">
-          <div className="flex justify-between text-xs">
-            <span className="text-gray-400">Confidence (ρ)</span>
-            <span className="text-cyan-400 font-bold jetbrains-mono">{(sigma.confidence * 100).toFixed(3)}%</span>
+          <div className="flex justify-between text-[10px] font-black uppercase tracking-widest">
+            <span className="text-gray-500">Confidence (ρ)</span>
+            <span className="text-purple-400">{(sigma.confidence * 100).toFixed(3)}%</span>
           </div>
-          <div className="w-full h-1 bg-gray-800 rounded-full overflow-hidden">
+          <div className="w-full h-1.5 bg-white/5 rounded-full overflow-hidden border border-white/5">
             <div 
-              className="h-full bg-cyan-400 transition-all duration-1000" 
+              className="h-full bg-gradient-to-r from-purple-500 to-pink-500 transition-all duration-1000 shadow-[0_0_10px_rgba(168,85,247,0.5)]" 
               style={{ width: `${sigma.confidence * 100}%` }} 
             />
           </div>
-          <p className="text-[10px] text-gray-500 leading-relaxed italic">
+          <p className="text-[10px] text-gray-500 leading-relaxed italic font-medium">
             Satisfies Robbins-Monro convergence conditions almost surely. Lyapunov V(t) minimized.
           </p>
         </div>
@@ -83,11 +83,11 @@ const Dashboard: React.FC<Props> = ({ sigma, systemStatus }) => {
       {/* Advanced Substrate Protocols */}
       <div className="md:col-span-12">
         <div className="flex items-center gap-3 mb-6">
-          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-cyan-500/30" />
-          <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-cyan-600 flex items-center gap-2">
+          <div className="h-[1px] flex-1 bg-gradient-to-r from-transparent to-purple-500/30" />
+          <h3 className="text-[10px] font-black uppercase tracking-[0.4em] text-purple-600 flex items-center gap-2">
             <Cpu size={14} /> Substrate Protocols
           </h3>
-          <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-cyan-500/30" />
+          <div className="h-[1px] flex-1 bg-gradient-to-l from-transparent to-purple-500/30" />
         </div>
         <SubstrateProtocols />
       </div>

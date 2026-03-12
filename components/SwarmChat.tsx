@@ -20,10 +20,10 @@ interface Props {
 }
 
 const SWARM_NODES = [
-  { id: 'nlp', name: 'NLP Catalyst (ε)', type: 'NLP', color: 'text-cyan-400', icon: BrainCircuit },
-  { id: 'vision', name: 'Vision Lattice (φ)', type: 'Vision', color: 'text-purple-400', icon: Zap },
-  { id: 'quantum', name: 'Quantum Core (ψ)', type: 'Quantum', color: 'text-blue-400', icon: Cpu },
-  { id: 'formal', name: 'Proof Oracle (θ)', type: 'Formal', color: 'text-emerald-400', icon: Shield },
+  { id: 'nlp', name: 'NLP Catalyst (ε)', type: 'NLP', color: 'text-purple-400', icon: BrainCircuit },
+  { id: 'vision', name: 'Vision Lattice (φ)', type: 'Vision', color: 'text-pink-400', icon: Zap },
+  { id: 'quantum', name: 'Quantum Core (ψ)', type: 'Quantum', color: 'text-cyan-400', icon: Cpu },
+  { id: 'formal', name: 'Proof Oracle (θ)', type: 'Formal', color: 'text-indigo-400', icon: Shield },
 ];
 
 const SwarmChat: React.FC<Props> = ({ sigma }) => {
@@ -128,64 +128,64 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
   };
 
   return (
-    <div className="flex flex-col h-full max-h-[calc(100vh-12rem)] gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
-      <div className="flex justify-between items-end">
+    <div className="flex flex-col h-full max-h-[calc(100vh-12rem)] gap-4 md:gap-6 animate-in fade-in slide-in-from-bottom-4 duration-500">
+      <div className="flex flex-col md:flex-row justify-between items-start md:items-end gap-4">
         <div>
-          <h2 className="text-xs font-bold text-cyan-600 uppercase tracking-[0.2em] mb-1">Neural Interlink</h2>
-          <h3 className="text-3xl font-black text-white flex items-center gap-3">
-            Swarm Consensus <Sparkles className="text-cyan-400" size={24} />
+          <h2 className="text-[10px] font-black text-purple-500 uppercase tracking-[0.3em] mb-1">Neural Interlink</h2>
+          <h3 className="text-2xl md:text-3xl font-black text-white flex items-center gap-3">
+            Swarm Consensus <Sparkles className="text-purple-400" size={24} />
           </h3>
         </div>
-        <div className="flex gap-4">
+        <div className="flex gap-2 md:gap-4 w-full md:w-auto overflow-x-auto pb-2 md:pb-0">
           {SWARM_NODES.map(node => (
             <div 
               key={node.id} 
-              className={`flex flex-col items-center transition-all duration-500 ${activeNodes.includes(node.id) ? 'scale-110 opacity-100' : 'opacity-40 grayscale'}`}
+              className={`flex flex-col items-center transition-all duration-500 flex-shrink-0 ${activeNodes.includes(node.id) ? 'scale-110 opacity-100' : 'opacity-40 grayscale'}`}
             >
-              <div className={`p-2 rounded-lg bg-black/40 border border-white/10 ${node.color} ${activeNodes.includes(node.id) ? 'shadow-[0_0_15px_rgba(0,255,255,0.3)] border-cyan-500/50' : ''}`}>
+              <div className={`p-2 rounded-xl bg-purple-900/20 border border-white/10 ${node.color} ${activeNodes.includes(node.id) ? 'shadow-[0_0_15px_rgba(168,85,247,0.3)] border-purple-500/50' : ''}`}>
                 <node.icon size={16} />
               </div>
-              <span className="text-[8px] uppercase font-bold mt-1 text-gray-500">{node.id}</span>
+              <span className="text-[8px] uppercase font-black mt-1 text-gray-500 tracking-tighter">{node.id}</span>
             </div>
           ))}
         </div>
       </div>
 
-      <div className="flex-1 glass-panel rounded-2xl overflow-hidden flex flex-col border-white/5">
+      <div className="flex-1 glass-panel rounded-3xl overflow-hidden flex flex-col border-purple-500/10">
         {/* Chat Messages */}
         <div 
           ref={scrollRef}
-          className="flex-1 overflow-y-auto p-6 space-y-6 scroll-smooth"
+          className="flex-1 overflow-y-auto p-4 md:p-6 space-y-6 scroll-smooth"
         >
           {messages.map((msg) => (
             <div 
               key={msg.id} 
-              className={`flex gap-4 ${msg.nodeType === 'User' ? 'flex-row-reverse' : ''} animate-in fade-in slide-in-from-bottom-2 duration-300`}
+              className={`flex gap-3 md:gap-4 ${msg.nodeType === 'User' ? 'flex-row-reverse' : ''} animate-in fade-in slide-in-from-bottom-2 duration-300`}
             >
-              <div className={`flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center border border-white/10 shadow-lg
-                ${msg.nodeType === 'User' ? 'bg-cyan-500/20 text-cyan-400' : 'bg-black/40 text-gray-400'}
-                ${msg.nodeType === 'NLP' ? 'text-cyan-400 border-cyan-500/30' : ''}
-                ${msg.nodeType === 'Vision' ? 'text-purple-400 border-purple-500/30' : ''}
-                ${msg.nodeType === 'Quantum' ? 'text-blue-400 border-blue-500/30' : ''}
-                ${msg.nodeType === 'Formal' ? 'text-emerald-400 border-emerald-500/30' : ''}
+              <div className={`flex-shrink-0 w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center border border-white/10 shadow-lg
+                ${msg.nodeType === 'User' ? 'bg-purple-500/20 text-purple-400' : 'bg-white/5 text-gray-400'}
+                ${msg.nodeType === 'NLP' ? 'text-purple-400 border-purple-500/30' : ''}
+                ${msg.nodeType === 'Vision' ? 'text-pink-400 border-pink-500/30' : ''}
+                ${msg.nodeType === 'Quantum' ? 'text-cyan-400 border-cyan-500/30' : ''}
+                ${msg.nodeType === 'Formal' ? 'text-indigo-400 border-indigo-500/30' : ''}
               `}>
-                {msg.nodeType === 'User' ? <User size={20} /> : <Bot size={20} />}
+                {msg.nodeType === 'User' ? <User size={18} /> : <Bot size={18} />}
               </div>
               
-              <div className={`max-w-[80%] space-y-1 ${msg.nodeType === 'User' ? 'items-end' : ''}`}>
+              <div className={`max-w-[85%] md:max-w-[80%] space-y-1 ${msg.nodeType === 'User' ? 'items-end' : ''}`}>
                 <div className="flex items-center gap-2 px-1">
-                  <span className={`text-[10px] font-black uppercase tracking-widest
-                    ${msg.nodeType === 'User' ? 'text-cyan-400' : 'text-gray-500'}
+                  <span className={`text-[9px] font-black uppercase tracking-widest
+                    ${msg.nodeType === 'User' ? 'text-purple-400' : 'text-gray-500'}
                   `}>
                     {msg.sender}
                   </span>
                   <span className="text-[8px] text-gray-700 jetbrains-mono">{msg.timestamp}</span>
                 </div>
-                <div className={`p-4 rounded-2xl text-sm leading-relaxed border
+                <div className={`p-3 md:p-4 rounded-2xl text-xs md:text-sm leading-relaxed border
                   ${msg.nodeType === 'User' 
-                    ? 'bg-cyan-500/10 border-cyan-500/30 text-cyan-50 rounded-tr-none' 
+                    ? 'bg-purple-500/10 border-purple-500/30 text-slate-100 rounded-tr-none' 
                     : 'bg-white/5 border-white/10 text-gray-300 rounded-tl-none'}
-                  ${msg.isCollaborative ? 'border-l-2 border-l-cyan-500/50' : ''}
+                  ${msg.isCollaborative ? 'border-l-2 border-l-purple-500/50' : ''}
                 `}>
                   {msg.content}
                 </div>
@@ -194,7 +194,7 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
           ))}
           {isLoading && (
             <div className="flex gap-4 animate-pulse">
-              <div className="w-10 h-10 rounded-xl bg-black/40 border border-white/10 flex items-center justify-center text-cyan-400">
+              <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-purple-400">
                 <Loader2 size={20} className="animate-spin" />
               </div>
               <div className="space-y-2 flex-1">
@@ -206,9 +206,9 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
         </div>
 
         {/* Input Area */}
-        <div className="p-4 bg-black/40 border-t border-white/5">
+        <div className="p-3 md:p-4 bg-white/5 border-t border-white/5">
           <div className="relative flex items-center gap-2">
-            <div className="absolute left-4 text-cyan-500/50">
+            <div className="absolute left-4 text-purple-500/50">
               <Terminal size={16} />
             </div>
             <input 
@@ -217,12 +217,12 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
               onChange={(e) => setInput(e.target.value)}
               onKeyDown={(e) => e.key === 'Enter' && handleSend()}
               placeholder="Inject query into the swarm..."
-              className="w-full bg-white/5 border border-white/10 rounded-xl py-4 pl-12 pr-16 text-sm focus:outline-none focus:border-cyan-500/50 transition-all placeholder:text-gray-600"
+              className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 md:py-4 pl-12 pr-16 text-sm focus:outline-none focus:border-purple-500/50 transition-all placeholder:text-gray-600 text-white"
             />
             <button 
               onClick={handleSend}
               disabled={isLoading || !input.trim()}
-              className="absolute right-2 p-2 bg-cyan-500 text-black rounded-lg hover:bg-cyan-400 transition-all disabled:opacity-50 disabled:grayscale"
+              className="absolute right-2 p-2 bg-gradient-to-br from-purple-500 to-pink-500 text-white rounded-xl hover:scale-105 transition-all disabled:opacity-50 disabled:grayscale shadow-lg"
             >
               <Send size={18} />
             </button>
@@ -230,15 +230,15 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
           <div className="mt-2 flex justify-between items-center px-2">
             <div className="flex items-center gap-4">
               <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-cyan-400 animate-pulse" />
-                <span className="text-[9px] text-cyan-600 font-bold uppercase tracking-tighter">PAS Alignment: {(sigma.pas * 100).toFixed(1)}%</span>
+                <div className="w-1.5 h-1.5 rounded-full bg-purple-400 animate-pulse" />
+                <span className="text-[8px] md:text-[9px] text-purple-600 font-black uppercase tracking-widest">PAS Alignment: {(sigma.pas * 100).toFixed(1)}%</span>
               </div>
-              <div className="flex items-center gap-1.5">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
-                <span className="text-[9px] text-emerald-600 font-bold uppercase tracking-tighter">Z3 SAT: VALID</span>
+              <div className="hidden sm:flex items-center gap-1.5">
+                <div className="w-1.5 h-1.5 rounded-full bg-indigo-400" />
+                <span className="text-[9px] text-indigo-600 font-black uppercase tracking-widest">Z3 SAT: VALID</span>
               </div>
             </div>
-            <span className="text-[9px] text-gray-600 jetbrains-mono">AEGIS-Ω v4.2.1-STABLE</span>
+            <span className="text-[8px] md:text-[9px] text-gray-600 jetbrains-mono uppercase font-black tracking-widest">AEGIS-Ω v4.2.1</span>
           </div>
         </div>
       </div>

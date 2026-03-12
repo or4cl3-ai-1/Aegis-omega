@@ -10,16 +10,19 @@
     <style>
         :root {
             --neon-cyan: #00ffff;
+            --ethereal-purple: #a855f7;
+            --vibrant-pink: #ec4899;
             --deep-obsidian: #050505;
-            --mystery-purple: #2a0a4d;
+            --deep-indigo: #1e1b4b;
         }
         body {
             background-color: var(--deep-obsidian);
-            color: #e0e0e0;
+            color: #f8fafc;
             font-family: 'Inter', sans-serif;
             overflow: hidden;
             margin: 0;
             padding: 0;
+            -webkit-tap-highlight-color: transparent;
         }
         .jetbrains-mono { font-family: 'JetBrains Mono', monospace; }
         
@@ -32,38 +35,49 @@
         }
 
         @keyframes pulseFractal {
-            0%, 100% { opacity: 0.1; transform: scale(1); }
-            50% { opacity: 0.25; transform: scale(1.05); }
+            0%, 100% { opacity: 0.15; transform: scale(1); }
+            50% { opacity: 0.3; transform: scale(1.02); }
         }
         .fractal-bg {
-            animation: pulseFractal 8s ease-in-out infinite;
+            animation: pulseFractal 12s ease-in-out infinite;
         }
 
         .glass-panel {
-            background: rgba(255, 255, 255, 0.03);
-            backdrop-filter: blur(12px);
-            border: 1px solid rgba(0, 255, 255, 0.1);
-            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+            background: rgba(15, 15, 25, 0.4);
+            backdrop-filter: blur(16px);
+            border: 1px solid rgba(168, 85, 247, 0.2);
+            box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.6);
         }
         
-        .neon-shadow {
-            box-shadow: 0 0 15px rgba(0, 255, 255, 0.3);
+        .neon-shadow-purple {
+            box-shadow: 0 0 20px rgba(168, 85, 247, 0.4);
         }
 
-        .neon-text {
+        .neon-text-purple {
+            text-shadow: 0 0 10px rgba(168, 85, 247, 0.8);
+        }
+
+        .neon-text-cyan {
             text-shadow: 0 0 10px rgba(0, 255, 255, 0.8);
         }
 
         /* Custom scrollbar */
         ::-webkit-scrollbar {
-            width: 4px;
+            width: 3px;
         }
         ::-webkit-scrollbar-track {
-            background: rgba(0, 0, 0, 0.2);
+            background: rgba(0, 0, 0, 0.3);
         }
         ::-webkit-scrollbar-thumb {
-            background: var(--neon-cyan);
+            background: linear-gradient(to bottom, var(--ethereal-purple), var(--vibrant-pink));
             border-radius: 10px;
+        }
+
+        /* Mobile specific fixes */
+        @media (max-width: 640px) {
+            .glass-panel {
+                backdrop-filter: blur(8px);
+            }
         }
     </style>
 <script type="importmap">
