@@ -80,3 +80,8 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ---
 
 *“Satisfies Robbins-Monro convergence conditions almost surely. Lyapunov V(t) minimized.”* — **AEGIS-Ω Core**
+
+## License
+
+This project is licensed under the **Or4cl3 Open Model License (OOML) v1.0**.
+See [LICENSE.md](LICENSE.md) for full terms.
