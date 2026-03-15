@@ -4,151 +4,106 @@
 **Issuing Organization:** Or4cl3 AI Solutions  
 **Contact:** dgroves003@gmail.com
 
-## 1. Preamble
+---
 
-The Or4cl3 Open Model License (OOML) v1.0 is designed to ensure that artificial intelligence models and related software are developed, shared, and used in ways that promote innovation while protecting the intellectual investments of contributors. This license combines the permissiveness of the MIT License with protective provisions inspired by copyleft licenses, creating a balanced framework for open AI development.
-
-## 2. Definitions
-
-- **Model**: Any machine learning model, neural network, or other computational model covered by this license, including weights, parameters, and architecture definitions.
-- **Source Code**: The preferred form of the Model and any accompanying software for making modifications to it.
-- **Object Form**: Any form resulting from transformation or translation of Source Code, including but not limited to compiled models, quantized versions, or containerized distributions.
-- **You**: An individual or legal entity exercising permissions granted by this License.
-- **Derivative Work**: Any Model, software, or work that, in whole or in part, contains, includes, or is based upon (in whole or in part) the Licensed Material.
-
-## 3. Grant of License
-
-Subject to the terms and conditions of this License, each copyright holder and contributor grants You a worldwide, royalty-free, non-exclusive, perpetual, and irrevocable right to:
-
-a) Use the Model in any manner, including commercial purposes;
-b) Reproduce the Model;
-c) Prepare Derivative Works based on the Model;
-d) Distribute the Model and Derivative Works;
-e) Perform and display the Model publicly;
-f) Sublicense the foregoing rights.
-
-## 4. Conditions
-
-### 4.1 Attribution Requirement
-
-You must provide clear and prominent attribution to the original Model and copyright holders in:
-- Any distributed copies of the Model or Derivative Works
-- Documentation or README files
-- User-facing materials or interfaces that utilize the Model
-
-The attribution must include the original Model name, creator/organization, and a reference to this license.
-
-### 4.2 License Propagation (Copyleft Provision)
-
-If You distribute a Derivative Work:
-
-a) You must distribute it under this same License (OOML v1.0) or a later version;
-b) You must include a copy of this License with any distribution;
-c) You must provide Source Code of your Derivative Work to recipients upon request, at no cost beyond reasonable reproduction and distribution costs;
-d) You must include prominent notices of any modifications made to the original Model;
-e) You must provide the Source Code in a form that is suitable for making further modifications.
-
-### 4.3 Patent Grant
-
-Each contributor grants You a non-exclusive, royalty-free, worldwide, and perpetual patent license to make, use, offer to sell, import, and otherwise transfer the Model and Derivative Works, except as excluded by section 4.4.
-
-### 4.4 Patent Retaliation
-
-If You initiate or participate in any claim, suit, or proceeding (including counterclaims) against any contributor regarding patents, Your patent licenses from that contributor for the Model and Derivative Works terminate immediately.
-
-## 5. Conditions for Distribution
-
-### 5.1 Conditions for Object Form Distribution
-
-When You distribute the Model or Derivative Works in Object Form:
-
-a) You must provide prominent written notice that the Model is made available under the OOML v1.0;
-b) You must provide or offer to provide Source Code to recipients;
-c) You must retain all copyright, patent, trademark, and attribution notices from the original Model.
-
-### 5.2 Network Distribution
-
-If Your Derivative Work is designed to be accessed primarily through a network (e.g., as a service, API, or online application):
-
-a) You must make the Source Code available for download by network users;
-b) You must provide a mechanism for users to request Source Code;
-c) The license terms still apply to any modifications You make.
-
-## 6. Derivative Works and Modifications
-
-### 6.1 Modifications
-
-You may modify the Model, and modifications are permitted without explicit permission. However:
-
-a) You must clearly identify all modifications You have made;
-b) You must retain all copyright notices from the original;
-c) You must include a prominent notice explaining what was modified and when;
-d) Derivative Works must be distributed under OOML v1.0 or later.
-
-### 6.2 Compatibility with Other Licenses
-
-Derivative Works may incorporate code or models under compatible open-source licenses (MIT, Apache 2.0, GPL, AGPL, BSD, etc.). In such cases:
-
-a) The most restrictive applicable license terms must be followed;
-b) Clear documentation of license compatibility must be provided;
-c) All applicable license texts must be included.
-
-## 7. Permissions
-
-Under this License, You are permitted to:
-
-- Use the Model for any purpose, including commercial use
-- Modify and create Derivative Works
-- Redistribute the Model and Derivative Works
-- Use the Model in proprietary applications (with attribution and source code availability)
-- Sublicense the Model (provided sublicensees agree to these terms)
-
-## 8. Limitations
-
-### 8.1 No Warranty
-
-THE MODEL IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM THE MODEL OR USE THEREOF.
-
-### 8.2 No Liability for Derivative Works
-
-Contributors are not liable for any damages caused by Derivative Works created by others, even if such works incorporate the original Model.
-
-### 8.3 No Trademark License
-
-This License does not grant permission to use the trade names, trademarks, service marks, or product names of contributors, except to the extent necessary for reasonable and customary use in describing the origin of the Model.
-
-## 9. Termination
-
-### 9.1 Automatic Termination
-
-Your rights under this License will terminate automatically without notice from any copyright holder if:
-
-a) You fail to comply with any material term of this License and do not cure the breach within 30 days of becoming aware of it;
-b) You initiate or participate in any patent claim against a contributor regarding the Model;
-c) You attempt to restrict others' rights to use the Model under this License.
-
-### 9.2 Survival
-
-Sections 1, 2, 8, and 9 survive termination of this License.
-
-## 10. Acceptance
-
-By using, modifying, or distributing the Model, You accept all terms and conditions of this License. If You do not agree to these terms, do not use the Model.
-
-## 11. Dispute Resolution
-
-Any disputes regarding this License shall be governed by the laws of the United States, and You agree to submit to the exclusive jurisdiction of the federal and state courts located in California.
-
-## 12. Entire Agreement
-
-This License constitutes the entire agreement between the parties regarding the use and distribution of the Model and supersedes all prior or contemporaneous agreements or understandings.
-
-## 13. Severability
-
-If any provision of this License is held to be invalid or unenforceable, the remaining provisions shall remain in full force and effect.
+> *"Open like MIT, protective like GPL."*
 
 ---
 
-**Version:** 1.0  
-**Last Updated:** February 23, 2026  
-**Maintained by:** Or4cl3 AI Solutions (dgroves003@gmail.com)
+## Preamble
+
+The Or4cl3 Open Model License (OOML) is a reciprocal, attribution-required open license designed for AI models, agent architectures, cognitive frameworks, and derivative software. It preserves the openness of permissive licenses while enforcing the reciprocity and ethical constraints that responsible AI development demands.
+
+OOML is designed to grow a commons — not to be captured by it.
+
+---
+
+## Grant of Rights
+
+Subject to the terms and conditions of this License, Or4cl3 AI Solutions (the "Licensor") hereby grants you a worldwide, royalty-free, non-exclusive license to:
+
+✅ **Use** — Run, execute, and deploy the licensed work for any lawful purpose, commercial or non-commercial  
+✅ **Remix** — Modify, adapt, translate, or build upon the licensed work  
+✅ **Redistribute** — Copy and distribute the original or modified work  
+✅ **Research** — Study the licensed work and use findings in academic or technical publications  
+
+---
+
+## Conditions
+
+### 1. Reciprocity (Share-Alike)
+Any derivative work, modification, fine-tune, adaptation, or integration that is distributed or deployed publicly **must be released under the OOML** or a compatible license approved in writing by Or4cl3 AI Solutions.
+
+- This applies to model weights, prompting architectures, agent frameworks, and software that incorporates substantial portions of the licensed work.
+- Internal-only modifications used within a single organization do not trigger this requirement.
+
+### 2. Attribution
+All distributions, publications, products, or services incorporating the licensed work must include:
+
+- The name **Or4cl3 AI Solutions** and the original work title
+- A link to the original repository or publication
+- A clear statement that modifications were made (if applicable)
+- The following notice where reasonably practicable:
+
+  > *"This work incorporates technology developed by Or4cl3 AI Solutions, licensed under the Or4cl3 Open Model License (OOML) v1.0."*
+
+### 3. Ethical Use Requirement
+The licensed work may not be used in applications that:
+
+- Facilitate mass surveillance, predictive policing, or social scoring systems
+- Generate disinformation, deepfakes, or coordinated inauthentic behavior at scale
+- Discriminate based on protected characteristics in consequential decision-making
+- Deploy autonomous lethal systems without human oversight
+- Violate applicable AI regulations including but not limited to the EU AI Act
+
+### 4. Misuse Termination
+Violation of Section 3 (Ethical Use Requirement) automatically terminates this License. Upon termination:
+
+- All rights granted herein cease immediately
+- Licensor may pursue all available legal remedies
+- Reinstatement requires written approval from Or4cl3 AI Solutions
+
+---
+
+## Commercial Licensing
+
+Organizations wishing to use the licensed work under terms other than those stated herein — including proprietary redistribution, white-labeling, or explicit opt-out from the Share-Alike requirement — may obtain a commercial license by contacting:
+
+**Or4cl3 AI Solutions**  
+dgroves003@gmail.com  
+https://github.com/or4cl3-ai-1
+
+Commercial licensing inquiries are responded to within 5 business days.
+
+---
+
+## No Warranty
+
+THE LICENSED WORK IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NONINFRINGEMENT. IN NO EVENT SHALL THE LICENSOR BE LIABLE FOR ANY CLAIM, DAMAGES, OR OTHER LIABILITY ARISING FROM USE OF THE LICENSED WORK.
+
+---
+
+## Compatibility
+
+OOML is designed to be compatible with:
+- GPL v3 (reciprocity-compatible)
+- Creative Commons Attribution-ShareAlike 4.0 (for non-software components)
+
+OOML is **not** compatible with MIT, Apache 2.0, or BSD licenses for downstream relicensing, as these do not preserve reciprocity requirements.
+
+---
+
+## Versioning
+
+Or4cl3 AI Solutions may publish revised versions of the OOML. Each version will be given a distinguishing version number. You may use the licensed work under the terms of the version under which it was originally published, or under any later version published by Or4cl3 AI Solutions.
+
+---
+
+## Governing Law
+
+This License shall be governed by and construed in accordance with the laws of the State of Arizona, United States, without regard to its conflict of law provisions.
+
+---
+
+*OOML v1.0 — Or4cl3 AI Solutions — February 2026*  
+*"Code is not just logic; it is a performance."*
