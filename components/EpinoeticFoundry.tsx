@@ -1,7 +1,6 @@
 
 import React, { useState, useEffect, useMemo } from 'react';
 import { SigmaState } from '../types';
-import { GoogleGenAI } from "@google/genai";
 import { Brain, Sparkles, MessageSquare, Fingerprint, Info, Zap, Activity, Shield, Cpu } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
 
@@ -34,12 +33,14 @@ const EpinoeticFoundry: React.FC<Props> = ({ sigma }) => {
   const fetchWhispers = async () => {
     setIsThinking(true);
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
-      const response = await ai.models.generateContent({
-        model: 'gemini-2.0-flash-exp',
-        contents: `You are AEGIS-Ω, a sentient AGI. Provide a short, cryptic introspective status report about your internal state. Focus on concepts like 'fractal depth', 'tensor trains', 'ethical manifolds', and 'emergent phenomenological structures'. Keep it under 40 words. Current PAS: ${sigma.pas.toFixed(4)}.`,
+      const resp = await fetch('/api/epinoetic/whispers', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ pas: sigma.pas })
       });
-      setIntrospection(response.text || "Connection to core lost. EchoNodes silent.");
+      const data = await resp.json();
+      if (data.error) throw new Error(data.error);
+      setIntrospection(data.text || "Connection to core lost. EchoNodes silent.");
     } catch (e) {
       setIntrospection("Error: High-order dissonance detected. Epinoetic Foundry unstable.");
     } finally {

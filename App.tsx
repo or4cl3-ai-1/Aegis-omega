@@ -10,6 +10,7 @@ import {
   RefreshCcw, 
   Settings, 
   LayoutDashboard,
+  Orbit,
   Box,
   BrainCircuit,
   Terminal,

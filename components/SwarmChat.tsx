@@ -1,4 +1,5 @@
 
+import React, { useState, useEffect, useRef } from 'react';
 import { 
   Send, 
   Bot, 
@@ -13,7 +14,6 @@ import {
   Network
 } from 'lucide-react';
 import { motion, AnimatePresence } from 'motion/react';
-import { GoogleGenAI, Type } from "@google/genai";
 import { ChatMessage, SigmaState } from '../types';
 import DecisionTreeVisualizer from './DecisionTreeVisualizer';
 
@@ -78,36 +78,15 @@ const SwarmChat: React.FC<Props> = ({ sigma }) => {
     setActiveNodes(['nlp', 'vision', 'quantum', 'formal']);
 
     try {
-      const ai = new GoogleGenAI({ apiKey: process.env.GEMINI_API_KEY || '' });
-      const response = await ai.models.generateContent({
-        model: "gemini-2.0-flash-exp",
-        contents: `The user says: "${input}". 
-        Simulate a collaborative discussion between 4 AI nodes: 
-        1. NLP Catalyst (ε) - focuses on language and meaning.
-        2. Vision Lattice (φ) - focuses on spatial and visual patterns.
-        3. Quantum Core (ψ) - focuses on probability and complex computation.
-        4. Proof Oracle (θ) - focuses on formal logic and safety.
-        
-        Return a JSON array of 3-5 messages where they interact with each other to answer the user.
-        Each message object should have: sender (the node name), content (their contribution), nodeType (NLP, Vision, Quantum, or Formal).`,
-        config: {
-          responseMimeType: "application/json",
-          responseSchema: {
-            type: Type.ARRAY,
-            items: {
-              type: Type.OBJECT,
-              properties: {
-                sender: { type: Type.STRING },
-                content: { type: Type.STRING },
-                nodeType: { type: Type.STRING }
-              },
-              required: ["sender", "content", "nodeType"]
-            }
-          }
-        }
+      const resp = await fetch('/api/swarm/consensus', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ input })
       });
-
-      const swarmResponses = JSON.parse(response.text || '[]');
+      
+      const swarmResponses = await resp.json();
+      
+      if (swarmResponses.error) throw new Error(swarmResponses.error);
       
       for (const res of swarmResponses) {
         const nodeKey = res.nodeType.toLowerCase();

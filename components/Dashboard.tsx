@@ -3,7 +3,7 @@ import React from 'react';
 import { SigmaState, SystemStatus } from '../types';
 import SigmaMatrix from './SigmaMatrix';
 import SubstrateProtocols from './SubstrateProtocols';
-import { Activity, ShieldCheck, Database, Zap, Globe, Cpu, Terminal } from 'lucide-react';
+import { Activity, ShieldCheck, Database, Zap, Globe, Cpu, Terminal, RefreshCcw } from 'lucide-react';
 import { motion } from 'motion/react';
 
 interface Props {
