@@ -1,10 +1,10 @@
 
-export type SystemStatus = 'INITIALIZING' | 'STABLE' | 'OPTIMIZING' | 'CRITICAL' | 'LOCKDOWN';
+export type SystemStatus = 'INITIALIZING' | 'STABLE' | 'OPTIMIZING' | 'CRITICAL' | 'LOCKDOWN' | 'EVOLVING' | 'TRANSCENDING';
 
 export interface NodeStatus {
   id: string;
   name: string;
-  type: 'NLP' | 'Vision' | 'Quantum' | 'Formal';
+  type: 'NLP' | 'Vision' | 'Quantum' | 'Formal' | 'Semantic';
   sync: number;
   health: number;
   lastProof: string;
@@ -15,6 +15,9 @@ export interface SigmaState {
   confidence: number;
   restoringForce: number;
   manifoldStability: number;
+  resonance: number;
+  entropy: number;
+  coherence: number;
 }
 
 export interface IntrospectionLog {
